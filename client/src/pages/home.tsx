@@ -1,5 +1,5 @@
-import { Home } from "@/components/home";
+import { EnhancedHome } from "@/components/enhanced-home";
 
 export default function HomePage() {
-  return <Home />;
+  return <EnhancedHome />;
 }
