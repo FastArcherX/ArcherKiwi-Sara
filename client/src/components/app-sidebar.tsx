@@ -148,19 +148,21 @@ export function AppSidebar({
           <SidebarGroupContent>
             <SidebarMenu>
               {notesInFolder().map((note) => (
-                <SidebarMenuItem key={note.id}>
-                  <SidebarMenuButton
-                    onClick={() => onNoteSelect(note.id)}
-                    isActive={selectedNoteId === note.id}
-                    className="group"
-                    data-testid={`note-item-${note.id}`}
-                  >
-                    <FileText className="w-4 h-4" />
-                    <span className="truncate">{note.title || "Untitled"}</span>
+                <SidebarMenuItem key={note.id} className="group">
+                  <div className="flex items-center w-full">
+                    <SidebarMenuButton
+                      onClick={() => onNoteSelect(note.id)}
+                      isActive={selectedNoteId === note.id}
+                      className="flex-1 mr-1"
+                      data-testid={`note-item-${note.id}`}
+                    >
+                      <FileText className="w-4 h-4" />
+                      <span className="truncate">{note.title || "Untitled"}</span>
+                    </SidebarMenuButton>
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="opacity-0 group-hover:opacity-100 ml-auto h-6 w-6 hover:bg-destructive hover:text-destructive-foreground"
+                      className="opacity-0 group-hover:opacity-100 h-6 w-6 hover:bg-destructive hover:text-destructive-foreground flex-shrink-0"
                       onClick={(e) => {
                         e.stopPropagation();
                         onNoteDelete(note.id);
@@ -169,7 +171,7 @@ export function AppSidebar({
                     >
                       <Trash2 className="w-3 h-3" />
                     </Button>
-                  </SidebarMenuButton>
+                  </div>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
@@ -186,19 +188,21 @@ export function AppSidebar({
             <SidebarGroupContent>
               <SidebarMenu>
                 {notesInFolder(folder.id).map((note) => (
-                  <SidebarMenuItem key={note.id}>
-                    <SidebarMenuButton
-                      onClick={() => onNoteSelect(note.id)}
-                      isActive={selectedNoteId === note.id}
-                      className="group"
-                      data-testid={`folder-note-item-${note.id}`}
-                    >
-                      <FileText className="w-4 h-4" />
-                      <span className="truncate">{note.title || "Untitled"}</span>
+                  <SidebarMenuItem key={note.id} className="group">
+                    <div className="flex items-center w-full">
+                      <SidebarMenuButton
+                        onClick={() => onNoteSelect(note.id)}
+                        isActive={selectedNoteId === note.id}
+                        className="flex-1 mr-1"
+                        data-testid={`folder-note-item-${note.id}`}
+                      >
+                        <FileText className="w-4 h-4" />
+                        <span className="truncate">{note.title || "Untitled"}</span>
+                      </SidebarMenuButton>
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="opacity-0 group-hover:opacity-100 ml-auto h-6 w-6 hover:bg-destructive hover:text-destructive-foreground"
+                        className="opacity-0 group-hover:opacity-100 h-6 w-6 hover:bg-destructive hover:text-destructive-foreground flex-shrink-0"
                         onClick={(e) => {
                           e.stopPropagation();
                           onNoteDelete(note.id);
@@ -207,7 +211,7 @@ export function AppSidebar({
                       >
                         <Trash2 className="w-3 h-3" />
                       </Button>
-                    </SidebarMenuButton>
+                    </div>
                   </SidebarMenuItem>
                 ))}
               </SidebarMenu>
