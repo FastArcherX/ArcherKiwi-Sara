@@ -160,7 +160,7 @@ export function AppSidebar({
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="opacity-0 group-hover:opacity-100 ml-auto h-6 w-6"
+                      className="opacity-0 group-hover:opacity-100 ml-auto h-6 w-6 hover:bg-destructive hover:text-destructive-foreground"
                       onClick={(e) => {
                         e.stopPropagation();
                         onNoteDelete(note.id);
@@ -198,7 +198,7 @@ export function AppSidebar({
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="opacity-0 group-hover:opacity-100 ml-auto h-6 w-6"
+                        className="opacity-0 group-hover:opacity-100 ml-auto h-6 w-6 hover:bg-destructive hover:text-destructive-foreground"
                         onClick={(e) => {
                           e.stopPropagation();
                           onNoteDelete(note.id);

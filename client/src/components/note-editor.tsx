@@ -234,7 +234,7 @@ export function NoteEditor({ note, onSave, onClose }: NoteEditorProps) {
         <div
           ref={editorRef}
           contentEditable
-          className="min-h-full w-full focus:outline-none prose prose-lg max-w-none"
+          className="min-h-full w-full focus:outline-none text-foreground text-base leading-relaxed"
           style={{ whiteSpace: 'pre-wrap' }}
           onInput={(e) => {
             setContent(e.currentTarget.textContent || '');
