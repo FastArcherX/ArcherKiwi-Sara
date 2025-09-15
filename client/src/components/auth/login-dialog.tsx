@@ -3,8 +3,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Button } from "@/components/ui/button";
 import { signInWithGoogle } from "@/lib/firebase";
 import { LogIn, Chrome } from "lucide-react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/lib/firebase";
+import { useOptionalAuth, hasFirebaseConfigured } from "@/hooks/useOptionalAuth";
 
 interface LoginDialogProps {
   open: boolean;
@@ -12,10 +11,15 @@ interface LoginDialogProps {
 }
 
 export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
-  const [user, loading] = useAuthState(auth);
+  const [user, loading] = useOptionalAuth();
   const [isSigningIn, setIsSigningIn] = useState(false);
 
   const handleSignIn = async () => {
+    if (!hasFirebaseConfigured) {
+      console.warn("Firebase non configurato - impossibile effettuare il login");
+      return;
+    }
+    
     try {
       setIsSigningIn(true);
       await signInWithGoogle();

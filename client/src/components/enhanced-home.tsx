@@ -10,8 +10,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, subscribeToNotes, subscribeToFolders, saveNote, deleteNote } from "@/lib/firebase";
+import { subscribeToNotes, subscribeToFolders, saveNote, deleteNote } from "@/lib/firebase";
+import { useOptionalAuth } from "@/hooks/useOptionalAuth";
 import {
   PlusCircle,
   Search,
@@ -44,7 +44,8 @@ interface Folder {
 }
 
 export function EnhancedHome() {
-  const [user, loading] = useAuthState(auth);
+  // Usa il hook sicuro per l'autenticazione opzionale
+  const [user, loading] = useOptionalAuth();
   const [notes, setNotes] = useState<Note[]>([]);
   const [folders, setFolders] = useState<Folder[]>([]);
   const [selectedNoteId, setSelectedNoteId] = useState<string | undefined>();
